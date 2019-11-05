@@ -27,21 +27,25 @@ function operate (operator, firstValue, secondValue) {
       console.log('This is working');
       clearText();
       textbox.textContent += `${add(firstValue, secondValue)}`;
+    break;
 
     case "subtract":
       console.log('This is working');
       clearText();
       textbox.textContent += `${subtract(firstValue, secondValue)}`;
+    break;
 
     case "multiply":
       console.log('This is working');
       clearText();
       textbox.textContent += `${multiply(firstValue, secondValue)}`;
+    break;
 
     case "divide":
       console.log('This is working');
       clearText();
       textbox.textContent += `${divide(firstValue, secondValue)}`;
+    break;
   }
 }
 
@@ -110,7 +114,6 @@ let displayValue = '0';
 let savedDisplay = '0';
 let operator = '';
 let mode = "inactive";
-//seven.addEventListener('click', addNumber);
 
 numberButtons.forEach(button => {
   button.addEventListener('click', addNumber);
