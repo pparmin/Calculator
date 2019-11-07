@@ -101,9 +101,7 @@ function chooseOperator (event) {
   If operator is set to active, because it has already been used 
     --> calculate temporary result and display it 
       --> from there proceed normally with the updated operator value  
-
   */
-
   if (event.target.className == "active") {
     console.log("-----IF PART ACTIVE-----")
     console.log('Operator is active');
