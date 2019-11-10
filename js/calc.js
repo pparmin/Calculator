@@ -104,7 +104,6 @@ function chooseOperator (event) {
   */
   if (event.target.className == "active") {
     console.log("-----IF PART ACTIVE-----")
-    console.log('Operator is active');
     console.log(`OPERATOR CHOSEN: ${operator}`);
     operate(operator, savedValue, displayValue);   
   }
@@ -170,6 +169,18 @@ function clearOperators () {
   setModeOperators.setInactive();
 }
 
+function clearValues () {
+  displayValue = '';
+  savedValue = '';
+}
+
+function eraseLastEntry () {
+  //let currentValue = displayValue;
+  textbox.textContent = `${displayValue.substring(0, displayValue.length - 1)}`;
+  console.log(`DISPLAY VALUE: ${displayValue}`);
+  displayValue = textbox.textContent;
+}
+
 const setModeNumbers = {
 
   setFirstValue : function() {
@@ -209,6 +220,8 @@ const setModeOperators = {
 
 const textbox = document.querySelector('.textbox');
 const result = document.querySelector('#result');
+const erase = document.querySelector('#erase');
+const plusMinus = document.querySelector('#plus-minus');
 
 const numberButtons = document.querySelectorAll('.numbers > button');
 const calcFunctions = document.querySelectorAll('.calc-functions > button');
@@ -235,6 +248,7 @@ calcFunctions.forEach(operator => {
 clear.addEventListener('click', () => {
   clearText();
   clearOperators();
+  clearValues();
 });
 
 result.addEventListener('click', () => {
@@ -246,3 +260,5 @@ result.addEventListener('click', () => {
   operator = '';
   setModeOperators.setInactive();
 });
+
+erase.addEventListener('click', eraseLastEntry);
