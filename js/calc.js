@@ -21,6 +21,11 @@ together with the savedValue.
 
 In order to chain operations, the program will look whether an operator has already been assigned (if class is "active").
 If it is, it will calculate a temporary result and display it, so it can be used in further calculations.
+
+THINGS TO IMPLEMENT: 
+Keyboard-support
+
+Proper styling
 */
 
 
@@ -127,6 +132,7 @@ function chooseOperator (event) {
   // sets the mode to "secondValue"
   setModeNumbers.setSecondValue();
 
+  hasDecimal = false;
 }
 
 function addNumber (event) {
@@ -158,7 +164,23 @@ function addOperatorSymbol (operator) {
     break; 
   }
 }
- 
+
+// switches the value between positive and negative (+/-) 
+function switchStatus () {
+  displayValue *= -1;
+  console.log(`DISPLAY VALUE: ${displayValue}`);
+  textbox.textContent = displayValue;
+}
+
+function addDecimalPoint (event) {
+  if (hasDecimal == true) {
+    return;
+  } else {
+    textbox.textContent += '.';
+    hasDecimal = true;
+  }
+}
+
 function clearText () {
   textbox.textContent = '';
   setModeNumbers.setFirstValue();
@@ -174,11 +196,14 @@ function clearValues () {
   savedValue = '';
 }
 
-function eraseLastEntry () {
-  //let currentValue = displayValue;
+function eraseLastNumber () {
+  if (hasDecimal == true) {
+    hasDecimal = false;
+  }
   textbox.textContent = `${displayValue.substring(0, displayValue.length - 1)}`;
-  console.log(`DISPLAY VALUE: ${displayValue}`);
   displayValue = textbox.textContent;
+  console.log(`DISPLAY VALUE: ${displayValue}`);
+
 }
 
 const setModeNumbers = {
@@ -222,18 +247,17 @@ const textbox = document.querySelector('.textbox');
 const result = document.querySelector('#result');
 const erase = document.querySelector('#erase');
 const plusMinus = document.querySelector('#plus-minus');
+const float = document.querySelector('#float');
 
 const numberButtons = document.querySelectorAll('.numbers > button');
 const calcFunctions = document.querySelectorAll('.calc-functions > button');
-console.log(numberButtons);
-console.log(calcFunctions);
 
 const clear = document.getElementById('clear');
 
 let displayValue = '';
 let savedValue = '';
-let tempResult = '';
 let operator = '';
+let hasDecimal = false;
 
 numberButtons.forEach(button => {
   button.addEventListener('click', addNumber);
@@ -249,16 +273,20 @@ clear.addEventListener('click', () => {
   clearText();
   clearOperators();
   clearValues();
+  hasDecimal = false;
 });
 
 result.addEventListener('click', () => {
   operate(operator, savedValue, displayValue);
 
-  // resetting the savedValue & operator after the operation fixes the issue
-  // of the result button switching between two values
+  /* resetting the savedValue & operator after the operation fixes the issue
+  of the result button switching between two values */
   savedValue = '';
   operator = '';
   setModeOperators.setInactive();
+  hasDecimal = false;
 });
 
-erase.addEventListener('click', eraseLastEntry);
+erase.addEventListener('click', eraseLastNumber);
+plusMinus.addEventListener('click', switchStatus);
+float.addEventListener('click', addDecimalPoint);
