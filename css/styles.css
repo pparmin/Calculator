@@ -41,14 +41,17 @@ button:focus {
   width: 320px;
   grid-template-rows: repeat(6, 1fr);
   grid-template-columns: repeat(4, 1fr);
-  /*box-shadow: 0px 1px 20px -2px rgb(170, 170, 170);*/
+  box-shadow: 1px 0px 15px -5px rgb(170, 172, 253);
+  border-radius: 10px;
 }
 
 .results {
   grid-column: 1 / span 4;
   grid-row: 1 / 2;
   background-color: rgb(112, 112, 124);
-  color: rgb(185, 103, 36);
+  color: rgb(42, 42, 54);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   /*box-shadow: -1px 5px 6px -2px rgb(222, 222, 222);*/
 }
 
@@ -109,10 +112,11 @@ button:focus {
 .numbers {
   grid-column: 1 / span 3;
   grid-row: 3 / span 4;
-
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(3, 1fr);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .numbers button {
@@ -134,6 +138,11 @@ button:focus {
   font-size: 24px;
   font-weight: 200;
   color: rgb(93, 92, 104);
+  border-bottom-right-radius: 8px;
+}
+
+#placeholder {
+  border-bottom-left-radius: 8px;
 }
 
 #float {
