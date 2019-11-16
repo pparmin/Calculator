@@ -23,7 +23,11 @@ In order to chain operations, the program will look whether an operator has alre
 If it is, it will calculate a temporary result and display it, so it can be used in further calculations.
 
 THINGS TO IMPLEMENT: 
-Keyboard-support
+Keyboard-support:
+  ISSUES:
+  --> keyboard isn't responsive if number isn't clicked first
+  --> Remove button should also have functionality with keyboard
+  --> Operators should also be triggered by the keyboard
 
 Proper styling
 */
@@ -145,6 +149,13 @@ function addNumber (event) {
   console.log(`NUMBER SELECTED: ${displayValue}`)
 }
 
+function addNumberKeyboard (event) {
+  let key = String.fromCharCode(event.keyCode);
+
+  textbox.textContent += key;
+  displayValue = textbox.textContent;
+}
+
 function addOperatorSymbol (operator) {
   switch (operator) {
     case "add":
@@ -243,6 +254,7 @@ const setModeOperators = {
   }
 };
 
+const container = document.querySelector('.calc-container');
 const textbox = document.querySelector('.textbox');
 const result = document.querySelector('#result');
 const erase = document.querySelector('#erase');
@@ -258,6 +270,8 @@ let displayValue = '';
 let savedValue = '';
 let operator = '';
 let hasDecimal = false;
+
+//container.addEventListener('keydown', addNumberKeyboard);
 
 numberButtons.forEach(button => {
   button.addEventListener('click', addNumber);
