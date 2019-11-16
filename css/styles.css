@@ -41,7 +41,7 @@ button:focus {
   width: 320px;
   grid-template-rows: repeat(6, 1fr);
   grid-template-columns: repeat(4, 1fr);
-  box-shadow: 1px 0px 15px -5px rgb(170, 172, 253);
+  box-shadow: 1px 0px 15px -5px rgb(117, 118, 173);
   border-radius: 10px;
 }
 
