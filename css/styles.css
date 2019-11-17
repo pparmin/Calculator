@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(42, 42, 54);
+}
+
 #text-one {
   text-align: center;
   font-size: 24px;
@@ -21,8 +25,9 @@
   margin-bottom: 16px;
 }
 
-body {
-  background-color: rgb(42, 42, 54);
+a {
+  text-decoration: underline;
+  color: rgb(185, 103, 36);
 }
 
 button:focus {
