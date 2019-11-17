@@ -39,16 +39,25 @@ Proper styling
 
 function add (firstValue, secondValue) {
   let sum = Number(firstValue) + Number(secondValue);
+  if(!Number.isInteger(sum)) {
+    sum = sum.toFixed(2);
+  }
   return sum;
 }
 
 function subtract (firstValue, secondValue) {
   let difference = Number(firstValue) - Number(secondValue);
+  if(!Number.isInteger(difference)) {
+    difference = difference.toFixed(2);
+  }
   return difference;
 }
 
 function multiply (firstValue, secondValue) {
   let product = Number(firstValue) * Number(secondValue);
+  if(!Number.isInteger(product)) {
+    product = product.toFixed(2);
+  }
   return product;
 }
 
@@ -58,6 +67,9 @@ function divide (firstValue, secondValue) {
   }
 
   let division = Number(firstValue) / Number(secondValue);
+  if(!Number.isInteger(division)) {
+    division = division.toFixed(2);
+  }
   return division;
 }
 
@@ -144,7 +156,12 @@ function addNumber (event) {
     clearText();
   }
 
-  textbox.textContent += event.target.value;
+  if(textbox.textContent.length > 8) {
+    console.log("This needs to be capped");
+    return;
+  } else {
+    textbox.textContent += event.target.value;
+  }
   displayValue = textbox.textContent;
   console.log(`NUMBER SELECTED: ${displayValue}`)
 }
