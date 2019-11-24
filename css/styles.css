@@ -9,6 +9,10 @@ a, a:hover, a:focus, a:active {
   color: inherit;
 }
 
+div {
+  display: inherit;
+}
+
 body {
   background-color: rgb(42, 42, 54);
 }
@@ -65,10 +69,18 @@ button:focus {
   /*box-shadow: -1px 5px 6px -2px rgb(222, 222, 222);*/
 }
 
+.saved {
+  float: right;
+  text-align: right;
+  margin: 20px 12px 20px 40px;
+  font-size: 20px;
+  height: 0;
+}
+
 .textbox {
   float: right;
-  text-align: center;
-  margin: 50px 5px 50px 50px;
+  text-align: right;
+  margin: 20px 12px 40px 40px;
   font-size: 40px;
   height: 24px;
 }
