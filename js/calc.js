@@ -33,6 +33,22 @@ ON IMPLEMENTATION:
 A display that portrays the saved values
 */
 
+const container = document.querySelector('.calc-container');
+const textbox = document.querySelector('.textbox');
+const savedDisplay = document.querySelector('.saved');
+const result = document.querySelector('#result');
+const erase = document.querySelector('#erase');
+const plusMinus = document.querySelector('#plus-minus');
+const float = document.querySelector('#float');
+const numberButtons = document.querySelectorAll('.numbers > button');
+const calcFunctions = document.querySelectorAll('.calc-functions > button');
+
+const clear = document.getElementById('clear');
+
+let displayValue = '';
+let savedValue = '';
+let operator = '';
+let hasDecimal = false;
 
 
 /* Basic functions for the different types of calculation */
@@ -109,6 +125,12 @@ function operate (operator, firstValue, secondValue) {
   setModeNumbers.setSecondValue();
   displayValue = textbox.textContent;
   savedDisplay.textContent = displayValue;
+
+  if (displayValue == "You can not divide by 0") {
+    clearSavedDisplay();
+    textbox.style.fontSize = '28px';
+  }
+
   console.log(`display value after result: ${displayValue}`);
 }
 
@@ -278,22 +300,6 @@ const setModeOperators = {
   }
 };
 
-const container = document.querySelector('.calc-container');
-const textbox = document.querySelector('.textbox');
-const savedDisplay = document.querySelector('.saved');
-const result = document.querySelector('#result');
-const erase = document.querySelector('#erase');
-const plusMinus = document.querySelector('#plus-minus');
-const float = document.querySelector('#float');
-const numberButtons = document.querySelectorAll('.numbers > button');
-const calcFunctions = document.querySelectorAll('.calc-functions > button');
-
-const clear = document.getElementById('clear');
-
-let displayValue = '';
-let savedValue = '';
-let operator = '';
-let hasDecimal = false;
 
 //container.addEventListener('keydown', addNumberKeyboard);
 
