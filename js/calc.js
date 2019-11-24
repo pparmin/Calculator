@@ -126,6 +126,7 @@ function operate (operator, firstValue, secondValue) {
   displayValue = textbox.textContent;
   savedDisplay.textContent = displayValue;
 
+  // fix display when divided by zero
   if (displayValue == "You can not divide by 0") {
     clearSavedDisplay();
     textbox.style.fontSize = '28px';
