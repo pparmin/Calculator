@@ -29,7 +29,8 @@ Keyboard-support:
   --> Remove button should also have functionality with keyboard
   --> Operators should also be triggered by the keyboard
 
-Proper styling
+ON IMPLEMENTATION:
+A display that portrays the saved values
 */
 
 
@@ -107,6 +108,7 @@ function operate (operator, firstValue, secondValue) {
   // sets the mode to "secondValue"
   setModeNumbers.setSecondValue();
   displayValue = textbox.textContent;
+  savedDisplay.textContent = displayValue;
   console.log(`display value after result: ${displayValue}`);
 }
 
@@ -154,6 +156,7 @@ function chooseOperator (event) {
 function addNumber (event) {
   if (event.target.classList == "secondValue") {
     clearText();
+    savedDisplay.textContent = savedValue;
   }
 
   if(textbox.textContent.length > 8) {
@@ -176,19 +179,19 @@ function addNumberKeyboard (event) {
 function addOperatorSymbol (operator) {
   switch (operator) {
     case "add":
-      textbox.textContent += '+';
+      textbox.textContent += ' +';
     break;
 
     case "subtract":
-      textbox.textContent += '-';
+      textbox.textContent += ' -';
     break;
 
     case "divide":
-      textbox.textContent += '/';
+      textbox.textContent += ' /';
     break;
 
     case "multiply":
-      textbox.textContent += '*';
+      textbox.textContent += ' *';
     break; 
   }
 }
@@ -222,6 +225,10 @@ function clearOperators () {
 function clearValues () {
   displayValue = '';
   savedValue = '';
+}
+
+function clearSavedDisplay () {
+  savedDisplay.textContent = '';
 }
 
 function eraseLastNumber () {
@@ -273,11 +280,11 @@ const setModeOperators = {
 
 const container = document.querySelector('.calc-container');
 const textbox = document.querySelector('.textbox');
+const savedDisplay = document.querySelector('.saved');
 const result = document.querySelector('#result');
 const erase = document.querySelector('#erase');
 const plusMinus = document.querySelector('#plus-minus');
 const float = document.querySelector('#float');
-
 const numberButtons = document.querySelectorAll('.numbers > button');
 const calcFunctions = document.querySelectorAll('.calc-functions > button');
 
@@ -304,6 +311,7 @@ clear.addEventListener('click', () => {
   clearText();
   clearOperators();
   clearValues();
+  clearSavedDisplay();
   hasDecimal = false;
 });
 
